@@ -1,7 +1,6 @@
-import { useState } from "react";
-
-import viteLogo from "/logo.svg";
-import "./TestComponent.css";
+import { useState } from 'react';
+import './TestComponent.css';
+import viteLogo from '/logo.svg';
 
 const TestComponent = () => {
   const [count, setCount] = useState(0);
@@ -13,7 +12,7 @@ const TestComponent = () => {
       </div>
       <h1>Vatrodojava</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button onClick={() => setCount(count => count + 1)}>
           count is {count}
         </button>
       </div>
