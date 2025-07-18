@@ -1,69 +1,34 @@
-# React + TypeScript + Vite
+# 🚨 Dojava 🚨
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Dojava** is a protocol-agnostic alarm monitoring platform for fire, flood, intrusion, and other event types.  
+It ingests signals from alarm panels, tracks events, and structures them across organizations and monitored locations.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧱 Core Structure
 
-## Expanding the ESLint configuration
+- **Organization** – Customer (e.g. company, department)
+- **Account** – Monitored location (formerly _Location_)
+- **Partition** – Independently armed/disarmed area within an Account
+- **Zone** – Detection point (e.g. motion sensor in hallway)
+- **Device** – Sensor assigned to a Zone
+- **Panel** – Central alarm unit at the Account level
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## ⚙️ Key Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- Supports SIA DC-09, Contact ID, and other industry protocols
+- Configurable onboarding for Organizations and Accounts
+- Auto-creation of Zones/Devices from incoming signals
+- Browser extension to ensure audio alarms are always heard
+- Smart email notifications (grouping repeated signals)
+- Role-based access (admin, user, finance/export)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🔔 Signal Flow
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Receive → Parse → Map (Account → Partition → Zone) → Categorize → Notify
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
